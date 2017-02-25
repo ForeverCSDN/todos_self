@@ -1,0 +1,62 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TodoMVC</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- CSS overrides - remove if you don't need it -->
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="./js/angular.min.js"></script>
+    <script src="./js/todos.js"></script>
+</head>
+<body ng-app="App">
+<section class="todoapp" ng-controller="TodosCtrl">
+    <header class="header">
+        <h1>{{title}}</h1>
+        <form ng-submit="add()">
+            <input class="new-todo" ng-model="msg" placeholder="What needs to be done?" autofocus>
+        </form>
+    </header>
+    <section class="main">
+        <input class="toggle-all" type="checkbox">
+        <label for="toggle-all">Mark all as complete</label>
+        <ul class="todo-list">
+            <li ng-repeat="list in arrData">
+                <div class="view">
+                    <input class="toggle" type="checkbox" ng-checked="list.flag" ng-click="finish($index)">
+                    <label>{{list.text}}</label>
+                    <button class="destroy" ng-click="des($index)"></button>
+                    <!--{{list.id}}{{$index}}-->
+                </div>
+                <input class="edit" value="Create a TodoMVC template">
+            </li>
+            <li><h3>Finished</h3></li>
+            <li ng-repeat="list in finishData">
+                <div class="view">
+                    <input class="toggle" type="checkbox" ng-checked="list.flag" ng-click="back($index)">
+                    <label>{{list.text}}</label>
+                    <div class="current">{{list.nowTime}}</div>
+                    <button class="destroy" ng-click="del($index)"></button>
+                </div>
+                <input class="edit" value="Create a TodoMVC template">
+            </li>
+        </ul>
+    </section>
+    <footer class="footer">
+        <span class="todo-count"><strong>{{arrData.length}}</strong> item left</span>
+        <span class="todo-count time">{{curTime}}</span>
+        <button class="clear-completed" ng-click="clear()">Clear completed</button>
+    </footer>
+</section>
+<footer class="info">
+    <p>Double-click to edit a todo</p>
+    <p>Template by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
+    <p>Created by <a href="http://todomvc.com">you</a></p>
+    <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>
+
+</body>
+</html>
