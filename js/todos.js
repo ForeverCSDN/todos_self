@@ -1,5 +1,4 @@
-﻿//aaaa
-//模块
+﻿//模块
 var app = angular.module('App',[]);
 //控制器
 app.controller('TodosCtrl',['$scope','$filter','$interval', function ($scope,$filter,$interval) {
